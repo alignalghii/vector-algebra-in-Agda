@@ -1,6 +1,6 @@
 module VecMatrix where
 
-open import Vec using (Vec; []; _∷_; vmap; vZipWith; vReplicate)
+open import Vec using (Vec; []; _∷_; vMap; vZipWith; vReplicate)
 open import VecAccess using (_[_])
 open import Nat using (ℕ; O; S)
 open import NatNotation using (#0; #1; #2; #3)
@@ -14,7 +14,7 @@ Matrix : Set → ℕ → ℕ → Set
 Matrix = λ A m n → Vec (Vec A n) m
 
 column : ∀ {A : Set} {m n : ℕ} → Matrix A m n → Fin n → Vec A m
-column rows j = vmap _[ j ] rows
+column rows j = vMap _[ j ] rows
 
 preponeColumn : ∀ {A : Set} {m n : ℕ} → Vec A m → Matrix A m n → Matrix A m (S n)
 preponeColumn column rows = vZipWith (_∷_) column rows
@@ -31,7 +31,7 @@ rows [ i , j ] = rows [ i ] [ j ]
 *[*,*]-sample₁ = refl
 
 transpose : ∀ {A : Set} {m n : ℕ} → Matrix A m n → Matrix A n m
-transpose {n = n} rows = vmap (column rows) (seq n)
+transpose {n = n} rows = vMap (column rows) (seq n)
 
 transpose-sample₁ : transpose (   (#0 ∷ #1 ∷ #2 ∷ #3 ∷ []) ∷
                                   (#3 ∷ #2 ∷ #1 ∷ #0 ∷ []) ∷ []

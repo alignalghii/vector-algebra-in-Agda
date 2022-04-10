@@ -23,9 +23,9 @@ last  : ∀ {A : Set} {n : ℕ} → Vec A (S n) → A
 last (a₁ ∷ []     ) = a₁
 last (_  ∷ a₂ ∷ as) = last (a₂ ∷ as)
 
-vmap : ∀ {A B : Set} {n : ℕ} → (A → B) → Vec A n → Vec B n
-vmap _ []       = []
-vmap f (a ∷ as) = f a ∷ vmap f as
+vMap : ∀ {A B : Set} {n : ℕ} → (A → B) → Vec A n → Vec B n
+vMap _ []       = []
+vMap f (a ∷ as) = f a ∷ vMap f as
 
 vZipWith : ∀ {A B C : Set} {n : ℕ} → (A → B → C) → Vec A n → Vec B n → Vec C n
 vZipWith _ []       []       = []
