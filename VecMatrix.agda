@@ -19,13 +19,13 @@ column rows j = vmap _[ j ] rows
 _[_,_] : ∀ {A : Set} {m n : ℕ} → Matrix A m n → Fin m → Fin n → A
 rows [ i , j ] = rows [ i ] [ j ]
 
-_[_,_]-sample₁ : (   (#0 ∷ #1 ∷ #2 ∷ #3 ∷ []) ∷
+*[*,*]-sample₁ : (   (#0 ∷ #1 ∷ #2 ∷ #3 ∷ []) ∷
                      (#3 ∷ #2 ∷ #1 ∷ #0 ∷ []) ∷ []
                  )
                  [ #1₂ , #2₄ ]
                  ≡
                  #1
-_[_,_]-sample₁ = refl
+*[*,*]-sample₁ = refl
 
 transpose : ∀ {A : Set} {m n : ℕ} → Matrix A m n → Matrix A n m
 transpose {n = n} rows = vmap (column rows) (seq n)

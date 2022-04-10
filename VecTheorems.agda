@@ -9,11 +9,11 @@ open import FinNotation using (#0₃; #1₃; #2₃)
 open import Eq using (_≡_; refl)
 
 
-_[_]-example₁ : (#2 ∷ #1 ∷ #0 ∷ []) [ #0₃ ] ≡ #2
-_[_]-example₁ = refl
+*[*]-example₁ : (#2 ∷ #1 ∷ #0 ∷ []) [ #0₃ ] ≡ #2
+*[*]-example₁ = refl
 
-_[_]-example₂ : (#2 ∷ #1 ∷ #0 ∷ []) [ #1₃ ] ≡ #1
-_[_]-example₂ = refl
+*[*]-example₂ : (#2 ∷ #1 ∷ #0 ∷ []) [ #1₃ ] ≡ #1
+*[*]-example₂ = refl
 
-_[_]-example₃ : (#2 ∷ #1 ∷ #0 ∷ []) [ #2₃ ] ≡ #0
-_[_]-example₃ = refl
+*[*]-example₃ : (#2 ∷ #1 ∷ #0 ∷ []) [ #2₃ ] ≡ #0
+*[*]-example₃ = refl
