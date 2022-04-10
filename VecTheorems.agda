@@ -2,7 +2,7 @@ module VecTheorems where
 
 open import Vec using (Vec; []; _∷_)
 open import VecAccess using (_[_])
-open import Fin using (Fin; fzero; fsucc)
+open import Fin using (Fin; fZero; fSucc)
 
 open import NatNotation using (#0; #1; #2)
 open import FinNotation using (#0₃; #1₃; #2₃)

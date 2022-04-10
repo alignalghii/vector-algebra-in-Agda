@@ -4,7 +4,7 @@ open import Vec using (Vec; []; _∷_; vMap; vZipWith; vReplicate)
 open import VecAccess using (_[_])
 open import Nat using (ℕ; O; S)
 open import NatNotation using (#0; #1; #2; #3)
-open import Fin using (Fin; fzero)
+open import Fin using (Fin; fZero)
 open import FinNotation using (#1₂; #2₄)
 open import VecSeq using (seq)
 open import Eq using (_≡_; refl; ≡-congruence)
@@ -51,9 +51,9 @@ transpose-prepone-lemma : ∀ {A : Set} {m n : ℕ} (row : Vec A n) (rows : Matr
 transpose-prepone-lemma [] [] = refl
 
 row-to-column : ∀ {A : Set} {m n : ℕ} (rows : Matrix A m n) (i : Fin m) → rows [ i ] ≡ column (transpose rows) i
-row-to-column ([]       ∷ rows) fzero = refl
-row-to-column ((a ∷ []) ∷ rows) fzero = refl
--- row-to-column ((a ∷ as) ∷ []  ) fzero = row-to-column (as ∷ []) fzero
+row-to-column ([]       ∷ rows) fZero = refl
+row-to-column ((a ∷ []) ∷ rows) fZero = refl
+-- row-to-column ((a ∷ as) ∷ []  ) fZero = row-to-column (as ∷ []) fZero
 
 postulate transpose-is-involution : ∀ {A : Set} {m n : ℕ} (rows : Matrix A m n) → transpose (transpose rows) ≡ rows
 -- TODO
