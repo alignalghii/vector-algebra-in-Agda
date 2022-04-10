@@ -26,3 +26,11 @@ last (_  ∷ a₂ ∷ as) = last (a₂ ∷ as)
 vmap : ∀ {A B : Set} {n : ℕ} → (A → B) → Vec A n → Vec B n
 vmap _ []       = []
 vmap f (a ∷ as) = f a ∷ vmap f as
+
+vZipWith : ∀ {A B C : Set} {n : ℕ} → (A → B → C) → Vec A n → Vec B n → Vec C n
+vZipWith _ []       []       = []
+vZipWith f (a ∷ as) (b ∷ bs) = f a b ∷ vZipWith f as bs
+
+vReplicate : ∀ {A : Set} (n : ℕ) (a : A) → Vec A n
+vReplicate O      _ = []
+vReplicate (S n') a = a ∷ vReplicate n' a
