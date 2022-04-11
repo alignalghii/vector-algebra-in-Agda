@@ -1,11 +1,11 @@
-module VecTheorems where
+module Vec.Theorems where
 
-open import Vec using (Vec; []; _∷_)
-open import VecAccess using (_[_])
-open import Fin using (Fin; fZero; fSucc)
+open import Vec.Base using (Vec; []; _∷_)
+open import Vec.Access using (_[_])
+open import Fin.Base using (Fin; fZero; fSucc)
 
-open import NatNotation using (#0; #1; #2)
-open import FinNotation using (#0₃; #1₃; #2₃)
+open import Nat.Notation using (#0; #1; #2)
+open import Fin.Notation using (#0₃; #1₃; #2₃)
 open import Eq using (_≡_; refl)
 
 

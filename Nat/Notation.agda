@@ -1,6 +1,6 @@
-module NatNotation where
+module Nat.Notation where
 
-open import Nat using (ℕ; O; S)
+open import Nat.Base using (ℕ; O; S)
 
 
 #0 #1 #2 #3 #4 : ℕ

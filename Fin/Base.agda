@@ -1,6 +1,6 @@
-module Fin where
+module Fin.Base where
 
-open import Nat using (ℕ; S)
+open import Nat.Base using (ℕ; S)
 
 
 data Fin : ℕ → Set where

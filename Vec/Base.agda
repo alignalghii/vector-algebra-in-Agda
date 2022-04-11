@@ -1,6 +1,6 @@
-module Vec where
+module Vec.Base where
 
-open import Nat using (ℕ; O; S; _+_; +-commutativity)
+open import Nat.Base using (ℕ; O; S; _+_; +-commutativity)
 open import Eq
 
 

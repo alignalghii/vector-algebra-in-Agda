@@ -1,8 +1,8 @@
-module FinNotation where
+module Fin.Notation where
 
-open import Fin using (Fin; fZero; fSucc)
-open import Nat using (ℕ)
-open import NatNotation
+open import Fin.Base using (Fin; fZero; fSucc)
+open import Nat.Base using (ℕ)
+open import Nat.Notation
 
 
 #0₁ : Fin #1

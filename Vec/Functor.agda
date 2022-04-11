@@ -1,7 +1,7 @@
-module VecFunctor where
+module Vec.Functor where
 
-open import Vec using (Vec; []; _∷_; vMap)
-open import Nat using (ℕ)
+open import Vec.Base using (Vec; []; _∷_; vMap)
+open import Nat.Base using (ℕ)
 open import Eq using (_≡_; refl; ≡-congruence)
 open import Combinators using (id; _∘_)
 

@@ -1,12 +1,12 @@
-module VecMatrix where
+module Vec.Matrix where
 
-open import Vec using (Vec; []; _∷_; vMap; vZipWith; vReplicate)
-open import VecAccess using (_[_])
-open import Nat using (ℕ; O; S)
-open import NatNotation using (#0; #1; #2; #3)
-open import Fin using (Fin; fZero)
-open import FinNotation using (#1₂; #2₄)
-open import VecSeq using (seq)
+open import Vec.Base using (Vec; []; _∷_; vMap; vZipWith; vReplicate)
+open import Vec.Access using (_[_])
+open import Nat.Base using (ℕ; O; S)
+open import Nat.Notation using (#0; #1; #2; #3)
+open import Fin.Base using (Fin; fZero)
+open import Fin.Notation using (#1₂; #2₄)
+open import Vec.Seq using (seq)
 open import Eq using (_≡_; refl; ≡-congruence)
 open import CategoricalTheorems using (is-constant)
 

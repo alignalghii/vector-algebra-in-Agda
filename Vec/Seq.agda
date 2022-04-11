@@ -1,10 +1,10 @@
-module VecSeq where
+module Vec.Seq where
 
-open import Vec
-open import Nat
-open import Fin
-open import NatNotation
-open import FinNotation
+open import Vec.Base
+open import Nat.Base
+open import Fin.Base
+open import Nat.Notation
+open import Fin.Notation
 open import Eq
 
 

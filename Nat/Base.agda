@@ -1,4 +1,4 @@
-module Nat where
+module Nat.Base where
 
 open import Eq
 
