@@ -8,6 +8,7 @@ open import Fin using (Fin; fZero)
 open import FinNotation using (#1₂; #2₄)
 open import VecSeq using (seq)
 open import Eq using (_≡_; refl; ≡-congruence)
+open import CategoricalTheorems using (is-constant)
 
 
 Matrix : Set → ℕ → ℕ → Set
@@ -43,16 +44,21 @@ transpose-sample₁ : transpose (   (#0 ∷ #1 ∷ #2 ∷ #3 ∷ []) ∷
                                   (#3 ∷ #0 ∷ []) ∷ []
 transpose-sample₁ = refl
 
-transpose-empty-lemma : ∀ {A : Set} {n : ℕ} (degeneratedHorizontalMatrix : Matrix A O n) → transpose degeneratedHorizontalMatrix ≡ vReplicate n []
-transpose-empty-lemma {n = O   } [] = refl
-transpose-empty-lemma {n = S n'} [] = ≡-congruence ([] ∷_) transpose-empty-lemma {n = n'} []
+postulate transpose-empty-lemma : ∀ {A : Set} {n : ℕ} (degeneratedHorizontalMatrix : Matrix A O n) → transpose degeneratedHorizontalMatrix ≡ vReplicate n []
+-- transpose-empty-lemma {n = O   } [] = refl
+-- transpose-empty-lemma {n = S n'} [] = ≡-congruence ? transpose-empty-lemma {n = n'} []
 
-transpose-prepone-lemma : ∀ {A : Set} {m n : ℕ} (row : Vec A n) (rows : Matrix A m n) → transpose (row ∷ rows) ≡ preponeColumn row (transpose rows)
-transpose-prepone-lemma [] [] = refl
+postulate empty-const-lemma : ∀ {A : Set} {n : ℕ} (degeneratedHorizontalMatrix : Matrix A O n) → is-constant (vMap {n = n} (column degeneratedHorizontalMatrix))
 
-row-to-column : ∀ {A : Set} {m n : ℕ} (rows : Matrix A m n) (i : Fin m) → rows [ i ] ≡ column (transpose rows) i
-row-to-column ([]       ∷ rows) fZero = refl
-row-to-column ((a ∷ []) ∷ rows) fZero = refl
+empty-const-lemma' : ∀ {A : Set} {n : ℕ} (degeneratedHorizontalMatrix : Matrix A O n) → is-constant (column degeneratedHorizontalMatrix)
+empty-const-lemma' [] _ _ = refl
+
+postulate transpose-prepone-lemma : ∀ {A : Set} {m n : ℕ} (row : Vec A n) (rows : Matrix A m n) → transpose (row ∷ rows) ≡ preponeColumn row (transpose rows)
+-- transpose-prepone-lemma [] [] = refl
+
+postulate row-to-column : ∀ {A : Set} {m n : ℕ} (rows : Matrix A m n) (i : Fin m) → rows [ i ] ≡ column (transpose rows) i
+-- row-to-column ([]       ∷ rows) fZero = refl
+-- row-to-column ((a ∷ []) ∷ rows) fZero = refl
 -- row-to-column ((a ∷ as) ∷ []  ) fZero = row-to-column (as ∷ []) fZero
 
 postulate transpose-is-involution : ∀ {A : Set} {m n : ℕ} (rows : Matrix A m n) → transpose (transpose rows) ≡ rows
