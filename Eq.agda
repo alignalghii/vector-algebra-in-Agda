@@ -19,3 +19,9 @@ data _≡_ {A : Set} (a : A) : A → Set where
 
 subst : ∀ {A : Set} {a a' : A} (P : A → Set) → a ≡ a' → P a → P a'
 subst P refl pa = pa
+
+
+-- Impossible rules:
+
+-- ≡-extensionality : ∀ {A B : Set} (f₁ f₂ : A → B) → (∀ (a : A) → f₁ a ≡ f₂ a) → f₁ ≡ f₂
+-- ≡-extensionality {A} {B} f₁ f₂ p = refl {A → B} {f₁} {f₂}
