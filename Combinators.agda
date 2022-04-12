@@ -13,3 +13,6 @@ flip f b a = f a b
 infixr 9 _∘_
 _∘_ : ∀ {A : Set} {B : A → Set} {C : ∀ (a : A) → B a → Set} (f : ∀ {a : A} (b : B a) → C a b) (g : ∀ (a : A) → B a)  → ∀ (a : A) → C a (g a)
 (f ∘ g) a = f (g a)
+
+flipped-app : ∀ {A B : Set} → A → (A → B) → B
+flipped-app = flip id
