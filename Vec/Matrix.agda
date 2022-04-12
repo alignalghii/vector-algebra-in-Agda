@@ -2,12 +2,13 @@ module Vec.Matrix where
 
 open import Vec.Base using (Vec; []; _∷_; vMap; vZipWith; vReplicate)
 open import Vec.Access using (_[_])
+open import Vec.Functor using (vMap-functor-keeps-constantness)
 open import Nat.Base using (ℕ; O; S)
 open import Nat.Notation using (#0; #1; #2; #3)
-open import Fin.Base using (Fin; fZero)
+open import Fin.Base using (Fin; fZero; fSucc)
 open import Fin.Notation using (#1₂; #2₄)
 open import Vec.Seq using (seq)
-open import Eq using (_≡_; refl; ≡-congruence)
+open import Eq using (_≡_; refl; ≡-transitivity; ≡-congruence)
 open import CategoricalTheorems using (is-constant)
 
 
@@ -44,14 +45,25 @@ transpose-sample₁ : transpose (   (#0 ∷ #1 ∷ #2 ∷ #3 ∷ []) ∷
                                   (#3 ∷ #0 ∷ []) ∷ []
 transpose-sample₁ = refl
 
+
+empty-const-lemma : ∀ {A : Set} {n : ℕ} (degeneratedHorizontalMatrix : Matrix A O n) → is-constant (vMap {n = n} (column degeneratedHorizontalMatrix))
+empty-const-lemma [] = vMap-functor-keeps-constantness (column []) (λ _ _ → refl)
+
 postulate transpose-empty-lemma : ∀ {A : Set} {n : ℕ} (degeneratedHorizontalMatrix : Matrix A O n) → transpose degeneratedHorizontalMatrix ≡ vReplicate n []
 -- transpose-empty-lemma {n = O   } [] = refl
--- transpose-empty-lemma {n = S n'} [] = ≡-congruence ? transpose-empty-lemma {n = n'} []
+-- transpose-empty-lemma {n = S n'} [] = ≡-congruence ([] ∷_)
+--                                      (
+--                                           ≡-transitivity
+--                                           (
+--                                                  (
+--                                                       empty-const-lemma []
+--                                                       (vMap fSucc (seq n'))
+--                                                       (seq n')
+--                                                  )
+--                                           )
+--                                           (transpose-empty-lemma {n = n'} [])
+--                                      )
 
-postulate empty-const-lemma : ∀ {A : Set} {n : ℕ} (degeneratedHorizontalMatrix : Matrix A O n) → is-constant (vMap {n = n} (column degeneratedHorizontalMatrix))
-
-empty-const-lemma' : ∀ {A : Set} {n : ℕ} (degeneratedHorizontalMatrix : Matrix A O n) → is-constant (column degeneratedHorizontalMatrix)
-empty-const-lemma' [] _ _ = refl
 
 postulate transpose-prepone-lemma : ∀ {A : Set} {m n : ℕ} (row : Vec A n) (rows : Matrix A m n) → transpose (row ∷ rows) ≡ preponeColumn row (transpose rows)
 -- transpose-prepone-lemma [] [] = refl
