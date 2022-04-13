@@ -44,3 +44,6 @@ subst P refl pa = pa
 
 -- ≡-extensionality : ∀ {A B : Set} (f₁ f₂ : A → B) → (∀ (a : A) → f₁ a ≡ f₂ a) → f₁ ≡ f₂
 -- ≡-extensionality {A} {B} f₁ f₂ p = refl {A → B} {f₁} {f₂}
+--
+-- TODO: for funExt, learn homotopy type theory and Cubical
+-- https://agda.readthedocs.io/en/v2.6.2.1/language/cubical.html#the-interval-and-path-types
