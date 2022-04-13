@@ -28,5 +28,8 @@ vMap-functor-keeps-constantness {A} {B} f f-is-constant (a₁ ∷ as₁) (a₂ �
 --
 -- But in Agda, the proof probably cannot be done using only the functor rules,
 -- (i.e. in the pure categorical way),
--- because Agda lacks function extensionality.
+-- because Agda lacks function extensionality (funExt).
 -- Thus we have to use the specific `vMap` functor directly for the proof, as shown above.
+--
+-- TODO: for funExt, learn homotopy type theory and Cubical
+-- https://agda.readthedocs.io/en/v2.6.2.1/language/cubical.html#the-interval-and-path-types
