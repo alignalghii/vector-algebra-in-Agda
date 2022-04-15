@@ -1,6 +1,6 @@
 module Vec.Matrix where
 
-open import Vec.Base using (Vec; []; _∷_; vMap; vZipWith; vReplicate)
+open import Vec.Base using (Vec; []; _∷_; vMap; vZipWith; vReplicate; vFillOutWith)
 open import Vec.Access using (_[_])
 open import Vec.Functor using (vMap-functor-keeps-constantness)
 open import Nat.Base using (ℕ; O; S)
@@ -33,7 +33,8 @@ rows [ i , j ] = rows [ i ] [ j ]
 *[*,*]-sample₁ = refl
 
 transpose : ∀ {A : Set} {m n : ℕ} → Matrix A m n → Matrix A n m
-transpose {n = n} rows = vMap (column rows) (seq n)
+transpose []           = vFillOutWith []
+transpose (row ∷ rows) = preponeColumn row (transpose rows)
 
 transpose-sample₁ : transpose (   (#0 ∷ #1 ∷ #2 ∷ #3 ∷ []) ∷
                                   (#3 ∷ #2 ∷ #1 ∷ #0 ∷ []) ∷ []

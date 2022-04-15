@@ -34,3 +34,6 @@ vZipWith f (a ∷ as) (b ∷ bs) = f a b ∷ vZipWith f as bs
 vReplicate : ∀ {A : Set} (n : ℕ) (a : A) → Vec A n
 vReplicate O      _ = []
 vReplicate (S n') a = a ∷ vReplicate n' a
+
+vFillOutWith : ∀ {A : Set} {n : ℕ} → A → Vec A n
+vFillOutWith {n = n} a = vReplicate n a
