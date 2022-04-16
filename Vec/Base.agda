@@ -19,10 +19,6 @@ _++_ : ∀ {A : Set} {m n : ℕ} → Vec A m → Vec A n → Vec A (m + n)
 _++_ {A} {m} {n} u v = subst (Vec A) (+-commutativity n m) (u ++' v)
 
 
-last  : ∀ {A : Set} {n : ℕ} → Vec A (S n) → A
-last (a₁ ∷ []     ) = a₁
-last (_  ∷ a₂ ∷ as) = last (a₂ ∷ as)
-
 vMap : ∀ {A B : Set} {n : ℕ} → (A → B) → Vec A n → Vec B n
 vMap _ []       = []
 vMap f (a ∷ as) = f a ∷ vMap f as

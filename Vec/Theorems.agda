@@ -17,3 +17,9 @@ open import Eq using (_≡_; refl)
 
 *[*]-example₃ : (#2 ∷ #1 ∷ #0 ∷ []) [ #2₃ ] ≡ #0
 *[*]-example₃ = refl
+
+head-example₁ : (#2 ∷ #1 ∷ #0 ∷ []) [ #2₃ ] ≡ #0
+head-example₁ = refl
+
+tail-example₁ : (#2 ∷ #1 ∷ #0 ∷ []) [ #2₃ ] ≡ #0
+tail-example₁ = refl
