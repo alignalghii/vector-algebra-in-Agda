@@ -83,19 +83,10 @@ column-at-cons-tail-identity (a₀₀ ∷ a₊₀) (a₀₊ ∷ a₊₊) i = ≡
 
 -- head-row-transpones-to-head-column : ∀ {A : Set} {m n : ℕ} (row : Vec A n) (rows : Matrix A m n) → transpose (row ∷ rows) = consColumn
 
-postulate xxx : ∀ {A : Set} {m n : ℕ} (row : Vec A n) (rows : Matrix A (S m) n) (i : Fin (S m)) → column (transpose rows) i ≡ column (transpose (row ∷ rows)) (fSucc i)
-postulate yyy :  ∀ {A : Set} {m n : ℕ} (row : Vec A n) (rows : Matrix A (S m) n) (i : Fin (S m)) → (row ∷ rows) [ fSucc i ] ≡ column (consColumn row (transpose rows)) (fSucc i)
-postulate zzz :  ∀ {A : Set} {m n : ℕ} (row : Vec A n) (rows : Matrix A (S m) n) (i : Fin (S m)) → (row ∷ rows) [ fSucc i ] ≡ column (transpose (row ∷ rows)) (fSucc i)
-
-a : ∀ {A : Set} {m n : ℕ} (row : Vec A n) (rows : Matrix A (S m) n) (i : Fin (S m)) → (row ∷ rows) [ fSucc i ] ≡ rows [ i ]
-a _ _ _ = refl
 
 row-to-column : ∀ {A : Set} {m n : ℕ} (rows⁺ : Matrix A m n) (i : Fin m) → rows⁺ [ i ] ≡ column (transpose rows⁺) i
 row-to-column (row ∷ rows) fZero      = ≡-symmetry (column-head-cons-identity row (transpose rows))
 row-to-column (row ∷ rows) (fSucc i') = ≡-transitivity (row-to-column rows i') (≡-symmetry (column-at-cons-tail-identity row (transpose rows) i'))
--- zzz row rows i'
--- ≡-transitivity (row-to-column rows i') (xxx row rows i')
--- (≡-symmetry (column-at-cons-tail-identity row (transpose rows) i'))
 
 -- ? -- row-to-column rows i -- ≡-symmetry (column-head-cons-identity row (transpose rows))
 -- row-to-column ((a ∷ []) ∷ []) fZero = refl
