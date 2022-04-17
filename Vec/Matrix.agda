@@ -23,7 +23,7 @@ headColumn : ∀ {A : Set} {m n : ℕ} (rows : Matrix A m (S n)) → Vec A m
 headColumn = vMap head
 
 consColumn : ∀ {A : Set} {m n : ℕ} → Vec A m → Matrix A m n → Matrix A m (S n)
-consColumn column columns = vZipWith (_∷_) column columns
+consColumn column₀ columns = vZipWith (_∷_) column₀ columns
 
 _[_,_] : ∀ {A : Set} {m n : ℕ} → Matrix A m n → Fin m → Fin n → A
 rows [ i , j ] = rows [ i ] [ j ]
