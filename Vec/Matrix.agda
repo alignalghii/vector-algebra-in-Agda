@@ -16,14 +16,20 @@ Matrix : Set → ℕ → ℕ → Set
 Matrix = λ A m n → Vec (Vec A n) m
 
 
-columnAt : ∀ {A : Set} {m n : ℕ} → Matrix A m n → Fin n → Vec A m
+columnAt _[*,_] : ∀ {A : Set} {m n : ℕ} → Matrix A m n → Fin n → Vec A m
 columnAt rows j = vMap _[ j ] rows
+_[*,_] = columnAt
 
 headColumn : ∀ {A : Set} {m n : ℕ} (rows : Matrix A m (S n)) → Vec A m
 headColumn = vMap head
 
-consColumn : ∀ {A : Set} {m n : ℕ} → Vec A m → Matrix A m n → Matrix A m (S n)
+consColumn _:|:_ : ∀ {A : Set} {m n : ℕ} → Vec A m → Matrix A m n → Matrix A m (S n)
 consColumn column₀ columns = vZipWith (_∷_) column₀ columns
+_:|:_ = consColumn
+
+nilColumn [|] : ∀ {A : Set} {m : ℕ} → Matrix A m O
+nilColumn = vFillOutWith []
+[|] = nilColumn
 
 _[_,_] : ∀ {A : Set} {m n : ℕ} → Matrix A m n → Fin m → Fin n → A
 rows [ i , j ] = rows [ i ] [ j ]
