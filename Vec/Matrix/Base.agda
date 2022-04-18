@@ -1,4 +1,4 @@
-module Vec.Matrix where
+module Vec.Matrix.Base where
 
 open import Vec.Base using (Vec; []; _∷_; vMap; vZipWith; vReplicate; vFillOutWith)
 open import Vec.Access using (_[_]; head; vExtensionality)
