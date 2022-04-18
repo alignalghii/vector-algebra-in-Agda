@@ -63,7 +63,7 @@ degeneratedHorizontalMatrix = []
 empty-const-lemma : ∀ {A : Set} {n : ℕ} → is-constant (vMap {n = n} ([-] {A} {n} [*,_]))
 empty-const-lemma = vMap-functor-keeps-constantness ([-] [*,_]) (λ _ _ → refl)
 
-postulate transpose-empty-lemma : ∀ {A : Set} {n : ℕ} → transpose ([-] {A}) ≡ vReplicate n []
+postulate transpose-empty-lemma : ∀ {A : Set} {n : ℕ} → transpose [-] ≡ [|] {A} {n}
 -- transpose-empty-lemma {n = O   } [] = refl
 -- transpose-empty-lemma {n = S n'} [] = ≡-congruence ([] ∷_)
 --                                      (
