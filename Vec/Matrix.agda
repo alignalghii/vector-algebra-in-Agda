@@ -1,7 +1,7 @@
 module Vec.Matrix where
 
 open import Vec.Base using (Vec; []; _∷_; vMap; vZipWith; vReplicate; vFillOutWith)
-open import Vec.Access using (_[_]; head)
+open import Vec.Access using (_[_]; head; vExtensionality)
 open import Vec.Functor using (vMap-functor-keeps-constantness)
 open import Nat.Base using (ℕ; O; S)
 open import Nat.Notation using (#0; #1; #2; #3)
@@ -94,10 +94,24 @@ row-to-column : ∀ {A : Set} {m n : ℕ} (rows⁺ : Matrix A m n) (i : Fin m) �
 row-to-column (row ∷ rows) fZero      = ≡-symmetry (column-head-cons-identity row (transpose rows))
 row-to-column (row ∷ rows) (fSucc i') = ≡-transitivity (row-to-column rows i') (≡-symmetry (column-at-cons-tail-identity row (transpose rows) i'))
 
+access-commutativity : ∀ {A : Set} {m n : ℕ} (rows : Matrix A m n) (i : Fin m) (j : Fin n) → rows [ i ] [ j ] ≡ rows [*, j ] [ i ]
+access-commutativity {m = O   } []           ()          _
+access-commutativity {m = S m'} (row ∷ rows) fZero       j = refl
+access-commutativity {m = S m'} (row ∷ rows) (fSucc i')  j = access-commutativity rows i' j
+
 -- ? -- row-to-column rows i -- ≡-symmetry (column-head-cons-identity row (transpose rows))
 -- row-to-column ((a ∷ []) ∷ []) fZero = refl
 -- row-to-column ((a ∷ []) ∷ rows) fZero = refl
 -- row-to-column ((a ∷ as) ∷ []  ) fZero = row-to-column (as ∷ []) fZero
 
-postulate transpose-is-involution : ∀ {A : Set} {m n : ℕ} (rows : Matrix A m n) → transpose (transpose rows) ≡ rows
--- TODO
+transposition-swaps-indices : ∀ {A : Set} {m n : ℕ} (mat : Matrix A m n) (i : Fin m) (j : Fin n) → mat [ i , j ] ≡ (transpose mat) [ j , i ]
+transposition-swaps-indices mat i j = ≡-transitivity (≡-congruence _[ j ] (row-to-column mat i)) (≡-symmetry (access-commutativity (transpose mat) j i))
+
+double-transposition-keeps-indices : ∀ {A : Set} {m n : ℕ} (mat : Matrix A m n) (i : Fin m) (j : Fin n) → (transpose (transpose mat)) [ i , j ] ≡ mat [ i , j ]
+double-transposition-keeps-indices mat i j = ≡-symmetry (≡-transitivity (transposition-swaps-indices mat i j) (transposition-swaps-indices (transpose mat) j i))
+
+matrix-extensionality : ∀ {A : Set} {m n : ℕ} (mat₁ mat₂ : Matrix A m n) → (∀ (i : Fin m) (j : Fin n) → mat₁ [ i ] [ j ] ≡ mat₂ [ i ] [ j ]) → mat₁ ≡ mat₂
+matrix-extensionality mat₁ mat₂ extEq = vExtensionality mat₁ mat₂ (λ i → vExtensionality (mat₁ [ i ]) (mat₂ [ i ]) (extEq i))
+
+transpose-is-involution : ∀ {A : Set} {m n : ℕ} (mat : Matrix A m n) → transpose (transpose mat) ≡ mat
+transpose-is-involution mat = matrix-extensionality (transpose (transpose mat)) mat (double-transposition-keeps-indices mat)
