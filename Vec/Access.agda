@@ -24,9 +24,9 @@ vExtensionality : ∀ {A : Set} {n : ℕ} (as₁ as₂ : Vec A n) → (∀ (i : 
 vExtensionality         []         []         _     = refl
 vExtensionality {A} {n} (a₁ ∷ as₁) (a₂ ∷ as₂) extEq = ≡-congruence₂ {A} {Vec A n} _∷_ (extEq fZero) (vExtensionality as₁ as₂ (extEq ∘ fSucc))
 
-head tail : ∀ {A : Set} {n : ℕ} → Vec A (S n) → A
+head vLast : ∀ {A : Set} {n : ℕ} → Vec A (S n) → A
 head = _[ fZero ]
-tail = _[ fLast ]
+vLast = _[ fLast ]
 
 -- Obsolete theorems, but only if head is not defined directly:
 -- If head is defined directly, head-is-first must be given a `_ ∷ _` pattern explicitely
@@ -34,5 +34,5 @@ tail = _[ fLast ]
 -- head-is-first : ∀ {A : Set} {n : ℕ} (as : Vec A (S n)) → head as ≡ as [ fZero ]
 -- head-is-first _ = refl
 
--- tail-is-last : ∀ {A : Set} {n : ℕ} (as : Vec A (S n)) → tail as ≡ as [ fLast ]
--- tail-is-last _ = refl
+-- vLast-is-last : ∀ {A : Set} {n : ℕ} (as : Vec A (S n)) → vLast as ≡ as [ fLast ]
+-- vLast-is-last _ = refl
