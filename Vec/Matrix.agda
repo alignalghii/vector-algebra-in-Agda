@@ -56,11 +56,14 @@ transpose-sample₁ : transpose (   (#0 ∷ #1 ∷ #2 ∷ #3 ∷ []) ∷
                                   (#3 ∷ #0 ∷ []) ∷ []
 transpose-sample₁ = refl
 
+degeneratedHorizontalMatrix [-] : ∀ {A : Set} {n : ℕ} → Matrix A O n
+degeneratedHorizontalMatrix = []
+[-] = degeneratedHorizontalMatrix
 
-empty-const-lemma : ∀ {A : Set} {n : ℕ} (degeneratedHorizontalMatrix : Matrix A O n) → is-constant (vMap {n = n} (degeneratedHorizontalMatrix [*,_]))
-empty-const-lemma [] = vMap-functor-keeps-constantness ([] [*,_]) (λ _ _ → refl)
+empty-const-lemma : ∀ {A : Set} {n : ℕ} → is-constant (vMap {n = n} ([-] {A} {n} [*,_]))
+empty-const-lemma = vMap-functor-keeps-constantness ([-] [*,_]) (λ _ _ → refl)
 
-postulate transpose-empty-lemma : ∀ {A : Set} {n : ℕ} (degeneratedHorizontalMatrix : Matrix A O n) → transpose degeneratedHorizontalMatrix ≡ vReplicate n []
+postulate transpose-empty-lemma : ∀ {A : Set} {n : ℕ} → transpose ([-] {A}) ≡ vReplicate n []
 -- transpose-empty-lemma {n = O   } [] = refl
 -- transpose-empty-lemma {n = S n'} [] = ≡-congruence ([] ∷_)
 --                                      (
