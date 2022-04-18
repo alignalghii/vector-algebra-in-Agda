@@ -99,11 +99,6 @@ access-commutativity {m = O   } []           ()          _
 access-commutativity {m = S m'} (row ∷ rows) fZero       j = refl
 access-commutativity {m = S m'} (row ∷ rows) (fSucc i')  j = access-commutativity rows i' j
 
--- ? -- row-to-column rows i -- ≡-symmetry (column-head-cons-identity row (transpose rows))
--- row-to-column ((a ∷ []) ∷ []) fZero = refl
--- row-to-column ((a ∷ []) ∷ rows) fZero = refl
--- row-to-column ((a ∷ as) ∷ []  ) fZero = row-to-column (as ∷ []) fZero
-
 transposition-swaps-indices : ∀ {A : Set} {m n : ℕ} (mat : Matrix A m n) (i : Fin m) (j : Fin n) → mat [ i , j ] ≡ (transpose mat) [ j , i ]
 transposition-swaps-indices mat i j = ≡-transitivity (≡-congruence _[ j ] (row-to-column mat i)) (≡-symmetry (access-commutativity (transpose mat) j i))
 
