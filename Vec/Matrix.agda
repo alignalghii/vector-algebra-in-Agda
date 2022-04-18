@@ -43,8 +43,8 @@ rows [ i , j ] = rows [ i ] [ j ]
 *[*,*]-sample₁ = refl
 
 transpose : ∀ {A : Set} {m n : ℕ} → Matrix A m n → Matrix A n m
-transpose []           = vFillOutWith []
-transpose (row ∷ rows) = consColumn row (transpose rows)
+transpose []           = [|]
+transpose (row ∷ rows) = row :|: transpose rows
 
 transpose-sample₁ : transpose (   (#0 ∷ #1 ∷ #2 ∷ #3 ∷ []) ∷
                                   (#3 ∷ #2 ∷ #1 ∷ #0 ∷ []) ∷ []
@@ -57,8 +57,8 @@ transpose-sample₁ : transpose (   (#0 ∷ #1 ∷ #2 ∷ #3 ∷ []) ∷
 transpose-sample₁ = refl
 
 
-empty-const-lemma : ∀ {A : Set} {n : ℕ} (degeneratedHorizontalMatrix : Matrix A O n) → is-constant (vMap {n = n} (columnAt degeneratedHorizontalMatrix))
-empty-const-lemma [] = vMap-functor-keeps-constantness (columnAt []) (λ _ _ → refl)
+empty-const-lemma : ∀ {A : Set} {n : ℕ} (degeneratedHorizontalMatrix : Matrix A O n) → is-constant (vMap {n = n} (degeneratedHorizontalMatrix [*,_]))
+empty-const-lemma [] = vMap-functor-keeps-constantness ([] [*,_]) (λ _ _ → refl)
 
 postulate transpose-empty-lemma : ∀ {A : Set} {n : ℕ} (degeneratedHorizontalMatrix : Matrix A O n) → transpose degeneratedHorizontalMatrix ≡ vReplicate n []
 -- transpose-empty-lemma {n = O   } [] = refl
@@ -76,21 +76,21 @@ postulate transpose-empty-lemma : ∀ {A : Set} {n : ℕ} (degeneratedHorizontal
 --                                      )
 
 
-postulate transpose-prepone-lemma : ∀ {A : Set} {m n : ℕ} (row : Vec A n) (rows : Matrix A m n) → transpose (row ∷ rows) ≡ consColumn row (transpose rows)
+postulate transpose-prepone-lemma : ∀ {A : Set} {m n : ℕ} (row : Vec A n) (rows : Matrix A m n) → transpose (row ∷ rows) ≡ row :|: (transpose rows)
 -- transpose-prepone-lemma [] [] = refl
 
-column-head-cons-identity : ∀ {A : Set} {m n : ℕ} (column₀ : Vec A m) (rows : Matrix A m n) → headColumn (consColumn column₀ rows) ≡ column₀
+column-head-cons-identity : ∀ {A : Set} {m n : ℕ} (column₀ : Vec A m) (rows : Matrix A m n) → headColumn (column₀ :|: rows) ≡ column₀
 column-head-cons-identity []              []                      = refl
 column-head-cons-identity (a₀₀ ∷ a₊₀) (a₀₊ ∷ a₊₊) = ≡-congruence (a₀₀ ∷_) (column-head-cons-identity a₊₀ a₊₊)
 
-column-at-cons-tail-identity : ∀ {A : Set} {m n : ℕ} (column₀ : Vec A m) (row⁺s : Matrix A m n) (i : Fin n) → columnAt (consColumn column₀ row⁺s) (fSucc i) ≡ columnAt row⁺s i
+column-at-cons-tail-identity : ∀ {A : Set} {m n : ℕ} (column₀ : Vec A m) (row⁺s : Matrix A m n) (i : Fin n) → (column₀ :|: row⁺s) [*, fSucc i ] ≡ row⁺s [*, i ]
 column-at-cons-tail-identity []          []          i = refl
 column-at-cons-tail-identity (a₀₀ ∷ a₊₀) (a₀₊ ∷ a₊₊) i = ≡-congruence (a₀₊ [ i ] ∷_) (column-at-cons-tail-identity a₊₀ a₊₊ i)
 
 -- head-row-transpones-to-head-column : ∀ {A : Set} {m n : ℕ} (row : Vec A n) (rows : Matrix A m n) → transpose (row ∷ rows) = consColumn
 
 
-row-to-column : ∀ {A : Set} {m n : ℕ} (rows⁺ : Matrix A m n) (i : Fin m) → rows⁺ [ i ] ≡ columnAt (transpose rows⁺) i
+row-to-column : ∀ {A : Set} {m n : ℕ} (rows⁺ : Matrix A m n) (i : Fin m) → rows⁺ [ i ] ≡ (transpose rows⁺) [*, i ]
 row-to-column (row ∷ rows) fZero      = ≡-symmetry (column-head-cons-identity row (transpose rows))
 row-to-column (row ∷ rows) (fSucc i') = ≡-transitivity (row-to-column rows i') (≡-symmetry (column-at-cons-tail-identity row (transpose rows) i'))
 
