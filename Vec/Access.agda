@@ -36,3 +36,11 @@ vLast = _[ fLast ]
 
 -- vLast-is-last : ∀ {A : Set} {n : ℕ} (as : Vec A (S n)) → vLast as ≡ as [ fLast ]
 -- vLast-is-last _ = refl
+
+tail : ∀ {A : Set} {n : ℕ} → Vec A (S n) → Vec A n
+tail (_ ∷ as) = as
+
+-- TODO: had is defined by sequencing, tail is defined by pattern matching
+-- There are two definition alternatives both for head and for tail
+-- Prove the equivalence of these alternatives!
+-- See also Vec/Matrix/ShipwreckedTheorems

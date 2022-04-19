@@ -10,7 +10,6 @@ open import Fin.Base using (Fin; fZero; fSucc)
 open import Nat.Notation
 open import Fin.Notation
 open import Eq using (_≡_; refl; ≡-symmetry; ≡-transitivity; ≡-congruence)
-open import CategoricalTheorems using (is-constant)
 
 
 
@@ -27,29 +26,6 @@ transpose-sample₁ : transpose (   (#0 ∷ #1 ∷ #2 ∷ #3 ∷ []) ∷
                                   (#2 ∷ #1 ∷ []) ∷
                                   (#3 ∷ #0 ∷ []) ∷ []
 transpose-sample₁ = refl
-
-
-empty-const-lemma : ∀ {A : Set} {n : ℕ} → is-constant (vMap {n = n} ([-] {A} {n} [*,_]))
-empty-const-lemma = vMap-functor-keeps-constantness ([-] [*,_]) (λ _ _ → refl)
-
-postulate transpose-empty-lemma : ∀ {A : Set} {n : ℕ} → transpose [-] ≡ [|] {A} {n}
--- transpose-empty-lemma {n = O   } [] = refl
--- transpose-empty-lemma {n = S n'} [] = ≡-congruence ([] ∷_)
---                                      (
---                                           ≡-transitivity
---                                           (
---                                                  (
---                                                       empty-const-lemma []
---                                                       (vMap fSucc (seq n'))
---                                                       (seq n')
---                                                  )
---                                           )
---                                           (transpose-empty-lemma {n = n'} [])
---                                      )
-
-
-postulate transpose-prepone-lemma : ∀ {A : Set} {m n : ℕ} (row : Vec A n) (rows : Matrix A m n) → transpose (row ∷ rows) ≡ row :|: (transpose rows)
--- transpose-prepone-lemma [] [] = refl
 
 column-head-cons-identity : ∀ {A : Set} {m n : ℕ} (column₀ : Vec A m) (rows : Matrix A m n) → headColumn (column₀ :|: rows) ≡ column₀
 column-head-cons-identity []          []          = refl
