@@ -2,7 +2,7 @@ module Vec.Matrix.RowsAndColumns where
 
 open import Vec.Matrix.Base using (Matrix)
 open import Vec.Base using (Vec; []; _∷_; vMap; vZipWith; vFillOutWith)
-open import Vec.Access using (_[_]; head; vExtensionality)
+open import Vec.Access using (_[_]; head; tail; vExtensionality)
 open import Nat.Base using (ℕ; O; S)
 open import Fin.Base using (Fin; fZero; fSucc)
 open import Eq using (_≡_; refl)
@@ -22,6 +22,9 @@ _:|:_ = consColumn
 nilColumn [|] : ∀ {A : Set} {m : ℕ} → Matrix A m O
 nilColumn = vFillOutWith []
 [|] = nilColumn
+
+column-tail : ∀ {A : Set} {m n : ℕ} → Matrix A m (S n) → Matrix A m n
+column-tail = vMap tail
 
 degeneratedHorizontalMatrix [-] : ∀ {A : Set} {n : ℕ} → Matrix A O n
 degeneratedHorizontalMatrix = []

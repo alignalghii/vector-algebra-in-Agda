@@ -17,6 +17,13 @@ transpose : ∀ {A : Set} {m n : ℕ} → Matrix A m n → Matrix A n m
 transpose []           = [|]
 transpose (row ∷ rows) = row :|: transpose rows
 
+transpose[|]≡[-] : ∀ {A : Set} {n : ℕ} → transpose [|] ≡ [-] {A} {n}
+transpose[|]≡[-] {A} {O}    = refl
+transpose[|]≡[-] {A} {S m'} = ≡-congruence ([] :|:_) (transpose[|]≡[-] {A} {m'})
+
+-- The dual is trivial by definition, i.e. same as `refl`:
+-- transpose[-]≡[|] : ∀ {A : Set} {m : ℕ} → transpose [-] ≡ [|] {A} {m}
+
 transpose-sample₁ : transpose (   (#0 ∷ #1 ∷ #2 ∷ #3 ∷ []) ∷
                                   (#3 ∷ #2 ∷ #1 ∷ #0 ∷ []) ∷ []
                               )
@@ -26,6 +33,7 @@ transpose-sample₁ : transpose (   (#0 ∷ #1 ∷ #2 ∷ #3 ∷ []) ∷
                                   (#2 ∷ #1 ∷ []) ∷
                                   (#3 ∷ #0 ∷ []) ∷ []
 transpose-sample₁ = refl
+
 
 column-head-cons-identity : ∀ {A : Set} {m n : ℕ} (column₀ : Vec A m) (rows : Matrix A m n) → headColumn (column₀ :|: rows) ≡ column₀
 column-head-cons-identity []          []          = refl
