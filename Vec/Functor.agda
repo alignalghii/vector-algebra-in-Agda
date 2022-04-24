@@ -1,7 +1,7 @@
 module Vec.Functor where
 
 open import Vec.Base using (Vec; []; _∷_; vMap)
-open import Nat.Base using (ℕ)
+open import Nat.Base using (ℕ; O; S)
 open import Eq using (_≡_; refl; ≡-congruence; ≡-congruence₂)
 open import Combinators using (id; _∘_)
 open import CategoricalTheorems using (is-constant)
@@ -33,3 +33,10 @@ vMap-functor-keeps-constantness {A} {B} f f-is-constant (a₁ ∷ as₁) (a₂ �
 --
 -- TODO: for funExt, learn homotopy type theory and Cubical
 -- https://agda.readthedocs.io/en/v2.6.2.1/language/cubical.html#the-interval-and-path-types
+
+
+-- Pure man's funExt: let us prove specific extensionality lemmas for possbile contexts where it turns out to be needed in the actual task:
+
+vMap-extensionality : ∀ {A B : Set} (f₁ f₂ : A → B) → (∀ (a : A) → f₁ a ≡ f₂ a) → (∀ {n : ℕ} (v : Vec A n) → vMap f₁ v ≡ vMap f₂ v)
+vMap-extensionality         _  _  _     {O}    []       = refl
+vMap-extensionality {A} {B} f₁ f₂ f₁≡f₂ {S n'} (a ∷ as) = ≡-congruence₂ {A} {B} _∷_ (f₁≡f₂ a) (vMap-extensionality f₁ f₂ f₁≡f₂ as)
