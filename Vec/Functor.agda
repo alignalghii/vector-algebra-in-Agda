@@ -6,7 +6,7 @@ open import Eq using (_≡_; refl; ≡-congruence; ≡-congruence₂)
 open import Combinators using (id; _∘_)
 open import CategoricalTheorems using (is-constant)
 
-
+-- TODO: consider shorter signature `vMap id ≡ id` from the funExt problem perspective
 vMap-functor-identity : ∀ {A : Set} {n : ℕ} (as : Vec A n) → vMap id as ≡ id as
 vMap-functor-identity [] = refl
 vMap-functor-identity (a ∷ as) = (≡-congruence (a ∷_)) (vMap-functor-identity as)
