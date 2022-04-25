@@ -1,6 +1,7 @@
 module Vec.Matrix.Transposition where
 
-open import Vec.Matrix.Base using (Matrix; _[_,_]; matrix-extensionality)
+open import Vec.Matrix.Base using (Matrix; _[_,_])
+open import Vec.Matrix.Involution using (Index-swapping; index-swapping-implies-involution)
 open import Vec.Matrix.RowsAndColumns using ([-]; headColumn; [|]; _:|:_; _[*,_]; access-commutativity; columnal-cons-access-head; columnal-cons-access-tail)
 open import Vec.Base using (Vec; []; _∷_; vMap)
 open import Vec.Access using (_[_])
@@ -43,12 +44,8 @@ row-to-column (row ∷ rows) fZero      = ≡-symmetry (columnal-cons-access-hea
 row-to-column (row ∷ rows) (fSucc i') = ≡-transitivity (row-to-column rows i') (≡-symmetry (columnal-cons-access-tail row (transpose rows) i'))
 
 
-transposition-swaps-indices : ∀ {A : Set} {m n : ℕ} (mat : Matrix A m n) (i : Fin m) (j : Fin n) → mat [ i , j ] ≡ (transpose mat) [ j , i ]
+transposition-swaps-indices : ∀ {A : Set} {m n : ℕ} → Index-swapping {A} {m} {n} transpose
 transposition-swaps-indices mat i j = ≡-transitivity (≡-congruence _[ j ] (row-to-column mat i)) (≡-symmetry (access-commutativity (transpose mat) j i))
 
-double-transposition-keeps-indices : ∀ {A : Set} {m n : ℕ} (mat : Matrix A m n) (i : Fin m) (j : Fin n) → (transpose (transpose mat)) [ i , j ] ≡ mat [ i , j ]
-double-transposition-keeps-indices mat i j = ≡-symmetry (≡-transitivity (transposition-swaps-indices mat i j) (transposition-swaps-indices (transpose mat) j i))
-
-
-transpose-is-involution : ∀ {A : Set} {m n : ℕ} (mat : Matrix A m n) → transpose (transpose mat) ≡ mat
-transpose-is-involution mat = matrix-extensionality (transpose (transpose mat)) mat (double-transposition-keeps-indices mat)
+transpose-is-involution : ∀ {A : Set} {m n : ℕ} (mat : Matrix A m n) → mat ≡ transpose (transpose mat)
+transpose-is-involution mat = index-swapping-implies-involution transpose transposition-swaps-indices mat

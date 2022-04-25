@@ -1,7 +1,7 @@
 module Vec.Matrix.Base where
 
 open import Vec.Base using (Vec; []; _∷_; vMap; vZipWith; vReplicate; vFillOutWith)
-open import Vec.Access using (_[_]; head; vExtensionality)
+open import Vec.Access using (_[_]; head)
 open import Vec.Functor using (vMap-functor-keeps-constantness)
 open import Nat.Base using (ℕ; O; S)
 open import Nat.Notation using (#0; #1; #2; #3)
@@ -26,6 +26,3 @@ rows [ i , j ] = rows [ i ] [ j ]
                  ≡
                  #1
 *[*,*]-sample₁ = refl
-
-matrix-extensionality : ∀ {A : Set} {m n : ℕ} (mat₁ mat₂ : Matrix A m n) → (∀ (i : Fin m) (j : Fin n) → mat₁ [ i ] [ j ] ≡ mat₂ [ i ] [ j ]) → mat₁ ≡ mat₂
-matrix-extensionality mat₁ mat₂ extEq = vExtensionality mat₁ mat₂ (λ i → vExtensionality (mat₁ [ i ]) (mat₂ [ i ]) (extEq i))
