@@ -1,8 +1,10 @@
 module Vec.Matrix.TranspositionAlternative where
 
 open import Vec.Matrix.Base using (Matrix)
-open import Vec.Matrix.Transposition using (transpose; transpose[|]≡[-])
-open import Vec.Matrix.RowsAndColumns using (_[*,_]; [|]; [-]; _:|:_; column-tail; columnal-cons-access-head; columnal-cons-access-tail)
+open import Vec.Matrix.Transposition using (transpose; transpose[|]≡[-]; transposition-swaps-indices)
+open import Vec.Matrix.Extensionality using (matrix-extensionality)
+open import Vec.Matrix.Involution using (Index-swapping)
+open import Vec.Matrix.RowsAndColumns using (_[*,_]; [|]; [-]; _:|:_; column-tail; columnal-cons-access-head; columnal-cons-access-tail; access-commutativity)
 open import Vec.Base using (Vec; []; _∷_; vMap)
 open import Vec.Access using (_[_])
 open import Vec.Functor using (vMap-functor-composition; vMap-extensionality)
@@ -16,8 +18,41 @@ open import Combinators using (const; _∘_)
 co-transpose : ∀ {A : Set} {m n : ℕ} → Matrix A m n → Matrix A n m
 co-transpose {n = n} mat = vMap (mat [*,_]) (seq n)
 
-cotransposition-row-to-column : ∀ {A : Set} {m n : ℕ} (mat : Matrix A m n) (j : Fin n) → (co-transpose mat) [ j ] ≡ mat [*, j ]
-cotransposition-row-to-column mat j = seq-mapping-application (mat [*,_]) j
+cotransposition-column-to-row : ∀ {A : Set} {m n : ℕ} (mat : Matrix A m n) (j : Fin n) → (co-transpose mat) [ j ] ≡ mat [*, j ]
+cotransposition-column-to-row mat j = seq-mapping-application (mat [*,_]) j
+
+-- @TODO: generalize and factor out to `Vec.Matrix.Involution`
+cotransposition-swaps-indices : ∀ {A : Set} {m n : ℕ} → Index-swapping {A} {m} {n} co-transpose
+cotransposition-swaps-indices {A} {m} {n} mat i j = ≡-transitivity
+                                                    (access-commutativity mat i j)
+                                                    (
+                                                        ≡-congruence _[ i ]
+                                                        (
+                                                            ≡-symmetry
+                                                            (cotransposition-column-to-row mat j)
+                                                        )
+                                                    )
+
+-- Transposition has equivalent alternative definitions:
+
+transposition-has-equivalent-alternative-definitions transposition≡cotransposition : ∀ {A : Set} {m n : ℕ} (mat : Matrix A m n) → transpose mat ≡ co-transpose mat
+transposition≡cotransposition mat = matrix-extensionality (transpose mat) (co-transpose mat)
+                                    (
+                                        λ i j → ≡-transitivity
+                                                (
+                                                    ≡-symmetry
+                                                    (transposition-swaps-indices mat j i)
+                                                )
+                                                (cotransposition-swaps-indices mat j i)
+                                    )
+transposition-has-equivalent-alternative-definitions = transposition≡cotransposition
+
+
+
+-------------------------------------------------------------
+-- Probably obsolete definitions, but consider, maybe useful
+-- confer with also `Vec/Matrix/ShipwreckedProofs`
+------------------------------------------------------------
 
 -- Columnal inductivity:
 
@@ -64,13 +99,3 @@ cotranspose[-]≡[|] {A} {m = S m'} = ≡-transitivity
 
 -- The dual is trivial by definition, i.e. same as `refl`:
 -- cotranspose[|]≡[-] : ∀ {A : Set} {n : ℕ} → co-transpose [|] ≡ [-] {A} {n}
-
-
--- Transposition has equivalent alternative definitions:
-
-transposition-has-equivalent-alternative-definitions transposition≡cotransposition : ∀ {A : Set} {m n : ℕ} (mat : Matrix A m n) → transpose mat ≡ co-transpose mat
-transposition≡cotransposition {m = O}    []       = ≡-symmetry cotranspose[-]≡[|]
-transposition≡cotransposition {m = S m'} (a ∷ as) = ?
-transposition-has-equivalent-alternative-definitions = transposition≡cotransposition
-
--- To prove this, try to fix and use `Vec/Matrix/ShipwreckedProofs`

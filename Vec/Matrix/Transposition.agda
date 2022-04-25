@@ -39,13 +39,13 @@ transpose-sample₁ = refl
 -- head-row-transpones-to-head-column : ∀ {A : Set} {m n : ℕ} (row : Vec A n) (rows : Matrix A m n) → transpose (row ∷ rows) = consColumn
 
 
-row-to-column : ∀ {A : Set} {m n : ℕ} (rows⁺ : Matrix A m n) (i : Fin m) → rows⁺ [ i ] ≡ (transpose rows⁺) [*, i ]
-row-to-column (row ∷ rows) fZero      = ≡-symmetry (columnal-cons-access-head row (transpose rows))
-row-to-column (row ∷ rows) (fSucc i') = ≡-transitivity (row-to-column rows i') (≡-symmetry (columnal-cons-access-tail row (transpose rows) i'))
+transposition-row-to-column : ∀ {A : Set} {m n : ℕ} (rows⁺ : Matrix A m n) (i : Fin m) → rows⁺ [ i ] ≡ (transpose rows⁺) [*, i ]
+transposition-row-to-column (row ∷ rows) fZero      = ≡-symmetry (columnal-cons-access-head row (transpose rows))
+transposition-row-to-column (row ∷ rows) (fSucc i') = ≡-transitivity (transposition-row-to-column rows i') (≡-symmetry (columnal-cons-access-tail row (transpose rows) i'))
 
-
+-- @TODO: generalize and factor out to `Vec.Matrix.Involution`:
 transposition-swaps-indices : ∀ {A : Set} {m n : ℕ} → Index-swapping {A} {m} {n} transpose
-transposition-swaps-indices mat i j = ≡-transitivity (≡-congruence _[ j ] (row-to-column mat i)) (≡-symmetry (access-commutativity (transpose mat) j i))
+transposition-swaps-indices mat i j = ≡-transitivity (≡-congruence _[ j ] (transposition-row-to-column mat i)) (≡-symmetry (access-commutativity (transpose mat) j i))
 
 transpose-is-involution : ∀ {A : Set} {m n : ℕ} (mat : Matrix A m n) → mat ≡ transpose (transpose mat)
 transpose-is-involution mat = index-swapping-implies-involution transpose transposition-swaps-indices mat
