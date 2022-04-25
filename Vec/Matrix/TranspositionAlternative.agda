@@ -4,8 +4,9 @@ open import Vec.Matrix.Base using (Matrix)
 open import Vec.Matrix.Transposition using (transpose; transpose[|]≡[-])
 open import Vec.Matrix.RowsAndColumns using (_[*,_]; [|]; [-]; _:|:_; column-tail; columnal-cons-access-head; columnal-cons-access-tail)
 open import Vec.Base using (Vec; []; _∷_; vMap)
+open import Vec.Access using (_[_])
 open import Vec.Functor using (vMap-functor-composition; vMap-extensionality)
-open import Vec.Seq using (seq)
+open import Vec.Seq using (seq; seq-mapping-application)
 open import Nat.Base using (ℕ; O ; S)
 open import Fin.Base using (Fin; fZero; fSucc)
 open import Eq using (_≡_; refl; ≡-symmetry; ≡-transitivity; ≡-congruence; ≡-congruence₂)
@@ -14,6 +15,9 @@ open import Combinators using (const; _∘_)
 
 co-transpose : ∀ {A : Set} {m n : ℕ} → Matrix A m n → Matrix A n m
 co-transpose {n = n} mat = vMap (mat [*,_]) (seq n)
+
+cotransposition-row-to-column : ∀ {A : Set} {m n : ℕ} (mat : Matrix A m n) (j : Fin n) → (co-transpose mat) [ j ] ≡ mat [*, j ]
+cotransposition-row-to-column mat j = seq-mapping-application (mat [*,_]) j
 
 -- Columnal inductivity:
 
