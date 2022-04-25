@@ -55,7 +55,7 @@ cotranspose[-]≡[|] {A} {m = S m'} = ≡-transitivity
                                         )
                                     )
 
--- Maybe this theorem shoould not be stated on its owns
+-- Maybe this theorem should not be stated on its owns
 -- as it is no easier (is even harder) than the general transposition-has-equivalent-alternative-definitions
 
 -- The dual is trivial by definition, i.e. same as `refl`:
