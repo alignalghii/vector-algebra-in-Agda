@@ -24,7 +24,7 @@ This project is only for the experimentation with the Agda formalization. The ac
 
 Important links to project parts:
 
-- Proving [equivalence of alternative definitions](https://github.com/alignalghii/vector-algebra-in-Agda/blob/main/Vec/Matrix/TranspositionAlternative.agda#L38) of matrix transposition
+- Proving [equivalence of alternative definitions](https://github.com/alignalghii/vector-algebra-in-Agda/blob/main/Vec/Matrix/TranspositionAlternative.agda#L36) of matrix transposition
 - Proving transposition [being self-inverse operation](https://github.com/alignalghii/vector-algebra-in-Agda/blob/main/Vec/Matrix/Transposition.agda#L50) (an *involution*)
 
 
