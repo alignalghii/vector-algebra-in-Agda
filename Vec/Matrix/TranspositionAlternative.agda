@@ -35,7 +35,7 @@ cotransposition-swaps-indices {A} {m} {n} mat i j = ≡-transitivity
 
 -- Transposition has equivalent alternative definitions:
 
-transposition-has-equivalent-alternative-definitions transposition≡cotransposition : ∀ {A : Set} {m n : ℕ} (mat : Matrix A m n) → transpose mat ≡ co-transpose mat
+transposition≡cotransposition : ∀ {A : Set} {m n : ℕ} (mat : Matrix A m n) → transpose mat ≡ co-transpose mat
 transposition≡cotransposition mat = matrix-extensionality (transpose mat) (co-transpose mat)
                                     (
                                         λ i j → ≡-transitivity
@@ -45,8 +45,6 @@ transposition≡cotransposition mat = matrix-extensionality (transpose mat) (co-
                                                 )
                                                 (cotransposition-swaps-indices mat j i)
                                     )
-transposition-has-equivalent-alternative-definitions = transposition≡cotransposition
-
 
 
 -------------------------------------------------------------
