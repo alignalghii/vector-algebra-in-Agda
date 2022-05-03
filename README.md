@@ -18,7 +18,7 @@ In short: Fourier-Motzkin elimination is suitable for collision detection for ar
 
 The ultimate long-goal of this project is to provide a formal and validity-proven specification of concrete collision detection based software: a floor-plan designer graphics editor for real estate agents: to ease the daily work of real estate employees by helping them to design the floor-plans of their flats on their own. A vector-graphics editor software tailored for the goal with specific features, most importantly collision detection, easy alignment of objects by sliding an colliding effects, handling wall openings (doors, windows, corridors), easy rearrangeability and modular build-up of a complete flat / house floorplan on all levels.
 
-This project is only for the experimentation with the Agda formalization. The actual floor plan designer graphics editor software has [its own project](https://github.com/alignalghii/loosely-coupled-figure-editor), a practical development, without any formal validity proofs (a somewhat stuck “legacy” project currently waiting for some refactory).
+This project is only for the experimentation with the Agda formalization. The actual floor plan designer graphics editor software has [its own project](https://github.com/alignalghii/loosely-coupled-figure-editor), a practical development, without any formal validity proofs (a somewhat stuck “legacy” project currently waiting for some refactory). It has also a detailed [README doc](https://github.com/alignalghii/loosely-coupled-figure-editor#readme).
 
 ## Current achievements: proving theorems on matrix transposition
 
