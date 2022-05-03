@@ -2,6 +2,15 @@
 
 # Vector algebra in Agda
 
+## Table of contents
+
+- [Scope of the project: middle and long-term goals](#scope-of-the-project-middle-and-long-term-goals)
+    - [Matrix algebra on collision detection](#matrix-algebra-on-collision-detection)
+    - [Complete formal specification and validation of a graphics editor with virtual physics](#complete-formal-specification-and-validation-of-a-graphics-editor-with-virtual-physics)
+- [Current achievements: proving theorems on matrix transposition](#current-achievements-proving-theorems-on-matrix-transposition)
+    - [Equivalence of alternative definitions](#equivalence-of-alternative-definitions)
+    - [Algebraic property: involution — being self-inverse](#algebraic-property-involution--being-self-inverse)
+
 ## Scope of the project: middle and long-term goals
 
 The scope of this project is to be able to state and to prove theorems about vectors and matrices. Agda is used as a theorem prover.
