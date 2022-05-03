@@ -1,4 +1,7 @@
-[(Back to central personal homepage)](https://alignalghii.github.io)
+---
+[[To project source]](#top) •|||• [[Back to central personal homepage]](https://alignalghii.github.io)
+
+---
 
 # Vector algebra in Agda
 
@@ -29,6 +32,11 @@ The ultimate long-goal of this project is to provide a formal and validity-prove
 
 This project is only for the experimentation with the Agda formalization. The actual floor plan designer graphics editor software has [its own project](https://github.com/alignalghii/loosely-coupled-figure-editor), a practical development, without any formal validity proofs (a somewhat stuck “legacy” project currently waiting for some refactory). It has also a detailed [README doc](https://github.com/alignalghii/loosely-coupled-figure-editor#readme).
 
+---
+[[To the top of this README]](#readme) •|||• [[To project source]](#top) •|||• [[Back to central personal homepage]](https://alignalghii.github.io)
+
+---
+
 ## Current achievements: proving theorems on matrix transposition
 
 Important links to project parts:
@@ -52,3 +60,8 @@ The project makes both definitions, states their equivalence, and also **proves 
 ### Algebraic property: involution — being self-inverse
 
 Afterwards, the project begins to state and prove interesting properties of transposition itself as an algebraic operation. Till now, only a single such purely algebraic property is stated and proven: **transposition is an involution**: an *involutive* (= self-inverse) operation among matrices.
+
+---
+[[To the top of this README]](#readme) •|||• [[To project source]](#top) •|||• [[Back to central personal homepage]](https://alignalghii.github.io)
+
+---
