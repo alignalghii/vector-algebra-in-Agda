@@ -61,6 +61,17 @@ The project makes both definitions, states their equivalence, and also **proves 
 
 Afterwards, the project begins to state and prove interesting properties of transposition itself as an algebraic operation. Till now, only a single such purely algebraic property is stated and proven: **transposition is an involution**: an *involutive* (= self-inverse) operation among matrices.
 
+## New challenges: the non-discrete, continuous, dense nature of numbers
+
+Although in the beginning phase I restrict myself to rational numbers (in order to avoid the many definitional challenges with field of reals), yet even the simpler field of rationals poses many interesting challenges.
+
+To tackle operations in a concise and staightforward way, the usual representation with fractions (ratios) is preferred. But this natural way of representation lacks the pleasant one-to-one  total correspondence we are wont to in the case of the simpler number sets (e.g. naturals).
+
+- The representation with fractions (ratios) must be **contrained**: the div-by-zero constraint must be built into the definition to preserve type safety.
+- Rationals not identified by their representation in a one-to one manner: a rational is an equivalence class of the affected fraction representations (defined by identity of the appropriate cross products).
+
+I try to solve both challenges [with the following approach](https://github.com/alignalghii/vector-algebra-in-Agda/blob/main/Rational/Base.agda), by formalizing both problems with their explicit construct. In doing so, negation is defined in the usual way as [deducible absurdity](https://github.com/alignalghii/vector-algebra-in-Agda/blob/main/Logic/Absurd.agda).
+
 ---
 [[To the top of this README]](#readme) •|||• [[To project source]](#top) •|||• [[Back to central personal homepage]](https://alignalghii.github.io)
 
