@@ -1,13 +1,17 @@
 module Logic.Eq where
 
 open import Logic.Combinators using (flipped-app)
+open import Logic.Absurd using (¬_)
 
 
 -- Datatype
 
-infix 4 _≡_
+infix 4 _≡_ _≢_
 data _≡_ {A : Set} (a : A) : A → Set where
     refl : a ≡ a
+
+_≢_ : ∀ {A : Set} → A → A → Set
+a₁ ≢ a₂ = ¬ (a₁ ≡ a₂)
 
 
 -- Basic rules:
