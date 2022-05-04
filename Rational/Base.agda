@@ -6,8 +6,8 @@ open import Logic.Eq using (_≡_; _≢_)
 
 
 data ℚ₀₊ : Set where
-    frac₀₊ : ∀ (m n : ℕ) → n ≢ O → ℚ₀₊
+    frac : ∀ (m n : ℕ) → n ≢ O → ℚ₀₊
 
 infix 4 _≡∷_
 _≡∷_ : ℚ₀₊ → ℚ₀₊ → Set
-frac₀₊ m₁ n₁ _ ≡∷ frac₀₊ m₂ n₂ _ = m₁ ⋅ n₂ ≡ m₂ ⋅ n₁
+frac m₁ n₁ _ ≡∷ frac m₂ n₂ _ = m₁ ⋅ n₂ ≡ m₂ ⋅ n₁
