@@ -3,8 +3,8 @@ module Vec.Access where
 open import Vec.Base using (Vec; []; _∷_)
 open import Nat.Base using (ℕ; S)
 open import Fin.Base using (Fin; fZero; fSucc; fLast)
-open import Eq using (_≡_; refl; ≡-congruence₂)
-open import Combinators using (_∘_)
+open import Logic.Eq using (_≡_; refl; ≡-congruence₂)
+open import Logic.Combinators using (_∘_)
 
 
 -- Note that the following does not work: `_[_] : ∀ {A : Set} {n : ℕ} → Vec A (S n) → Fin (S n) → A`

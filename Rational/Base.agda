@@ -1,6 +1,6 @@
 module Rational.Base where
 
-open import Bool.Base using (𝟚)
+open import Logic.Bool using (𝟚)
 open import Nat.Base using (ℕ)
 
 

@@ -1,7 +1,7 @@
-module CategoricalTheorems where
+module Logic.CategoricalTheorems where
 
-open import Eq using (_≡_; refl)
-open import Combinators using (_∘_)
+open import Logic.Eq using (_≡_; refl)
+open import Logic.Combinators using (_∘_)
 
 
 is-constant : ∀ {A B : Set} → (A → B) → Set

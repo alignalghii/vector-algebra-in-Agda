@@ -1,6 +1,6 @@
-module Eq where
+module Logic.Eq where
 
-open import Combinators using (flipped-app)
+open import Logic.Combinators using (flipped-app)
 
 
 -- Datatype

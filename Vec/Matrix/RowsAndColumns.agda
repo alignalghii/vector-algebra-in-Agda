@@ -5,7 +5,7 @@ open import Vec.Base using (Vec; []; _∷_; vMap; vZipWith; vFillOutWith)
 open import Vec.Access using (_[_]; head; tail; vExtensionality)
 open import Nat.Base using (ℕ; O; S)
 open import Fin.Base using (Fin; fZero; fSucc)
-open import Eq using (_≡_; refl; ≡-congruence)
+open import Logic.Eq using (_≡_; refl; ≡-congruence)
 
 
 columnAt _[*,_] : ∀ {A : Set} {m n : ℕ} → Matrix A m n → Fin n → Vec A m

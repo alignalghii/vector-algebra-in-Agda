@@ -8,8 +8,8 @@ open import Nat.Notation using (#0; #1; #2; #3)
 open import Fin.Base using (Fin; fZero; fSucc)
 open import Fin.Notation using (#1₂; #2₄)
 open import Vec.Seq using (seq)
-open import Eq using (_≡_; refl; ≡-symmetry; ≡-transitivity; ≡-congruence)
-open import CategoricalTheorems using (is-constant)
+open import Logic.Eq using (_≡_; refl; ≡-symmetry; ≡-transitivity; ≡-congruence)
+open import Logic.CategoricalTheorems using (is-constant)
 
 
 Matrix : Set → ℕ → ℕ → Set

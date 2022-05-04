@@ -10,7 +10,7 @@ open import Nat.Base using (ℕ; O; S)
 open import Fin.Base using (Fin; fZero; fSucc)
 open import Nat.Notation
 open import Fin.Notation
-open import Eq using (_≡_; refl; ≡-symmetry; ≡-transitivity; ≡-congruence)
+open import Logic.Eq using (_≡_; refl; ≡-symmetry; ≡-transitivity; ≡-congruence)
 
 
 

@@ -7,8 +7,8 @@ open import Nat.Base
 open import Fin.Base
 open import Nat.Notation
 open import Fin.Notation
-open import Eq
-open import Combinators using (id; _∘_)
+open import Logic.Eq
+open import Logic.Combinators using (id; _∘_)
 
 
 Seq : ℕ → Set

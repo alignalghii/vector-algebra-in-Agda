@@ -1,4 +1,4 @@
-module Combinators where
+module Logic.Combinators where
 
 
 const : ∀ {A B : Set} → A → B → A

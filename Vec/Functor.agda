@@ -2,9 +2,9 @@ module Vec.Functor where
 
 open import Vec.Base using (Vec; []; _∷_; vMap)
 open import Nat.Base using (ℕ; O; S)
-open import Eq using (_≡_; refl; ≡-congruence; ≡-congruence₂)
-open import Combinators using (id; _∘_)
-open import CategoricalTheorems using (is-constant)
+open import Logic.Eq using (_≡_; refl; ≡-congruence; ≡-congruence₂)
+open import Logic.Combinators using (id; _∘_)
+open import Logic.CategoricalTheorems using (is-constant)
 
 -- TODO: consider shorter signature `vMap id ≡ id` from the funExt problem perspective
 vMap-functor-identity : ∀ {A : Set} {n : ℕ} (as : Vec A n) → vMap id as ≡ id as

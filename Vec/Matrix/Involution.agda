@@ -4,8 +4,8 @@ open import Vec.Matrix.Extensionality using (matrix-extensionality; Index-keepin
 open import Vec.Matrix.Base using (Matrix; _[_,_])
 open import Nat.Base using (ℕ)
 open import Fin.Base using (Fin)
-open import Eq using (_≡_; ≡-transitivity)
-open import Combinators using (_∘_)
+open import Logic.Eq using (_≡_; ≡-transitivity)
+open import Logic.Combinators using (_∘_)
 
 
 Index-swapping : ∀ {A : Set} {m n : ℕ} → (Matrix A m n → Matrix A n m) → Set

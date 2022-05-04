@@ -1,6 +1,6 @@
 module Nat.Base where
 
-open import Eq
+open import Logic.Eq
 
 
 data ℕ : Set where

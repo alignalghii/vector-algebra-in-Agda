@@ -2,8 +2,8 @@ module Vec.Reverse where
 
 open import Vec.Base using (Vec; []; _∷_; _++_; last)
 open import Nat.Base using (ℕ; O; S; _+_; +-has-left-neutral; +-is-left-recurrible; +-commutativity)
-open import Eq using (_≡_; refl; ≡-symmetry; ≡-transitivity; ≡-transitivity₃; ≡-congruence; subst)
-open import Combinators using (flip)
+open import Logic.Eq using (_≡_; refl; ≡-symmetry; ≡-transitivity; ≡-transitivity₃; ≡-congruence; subst)
+open import Logic.Combinators using (flip)
 
 
 infix 6 _+'_

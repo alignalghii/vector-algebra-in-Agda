@@ -1,7 +1,7 @@
 module Vec.Base where
 
 open import Nat.Base using (ℕ; O; S; _+_; +-commutativity)
-open import Eq
+open import Logic.Eq
 
 
 data Vec (A : Set) : ℕ → Set where

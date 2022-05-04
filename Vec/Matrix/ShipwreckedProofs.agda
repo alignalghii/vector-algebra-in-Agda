@@ -9,8 +9,8 @@ open import Vec.Access using (_[_])
 open import Vec.Functor using (vMap-functor-keeps-constantness)
 open import Nat.Base using (ℕ; O; S)
 open import Fin.Base using (Fin; fZero; fSucc)
-open import Eq using (_≡_; refl; ≡-symmetry; ≡-transitivity; ≡-congruence)
-open import CategoricalTheorems using (is-constant)
+open import Logic.Eq using (_≡_; refl; ≡-symmetry; ≡-transitivity; ≡-congruence)
+open import Logic.CategoricalTheorems using (is-constant)
 
 
 degenerate-row-to-col  : ∀ {A : Set} {m : ℕ} → transpose  [-] ≡ [|] {A} {m}

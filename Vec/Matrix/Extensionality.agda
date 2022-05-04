@@ -4,7 +4,7 @@ open import Vec.Matrix.Base using (Matrix; _[_,_])
 open import Vec.Access using (vExtensionality; _[_])
 open import Nat.Base using (ℕ)
 open import Fin.Base using (Fin)
-open import Eq using (_≡_)
+open import Logic.Eq using (_≡_)
 
 
 matrix-extensionality : ∀ {A : Set} {m n : ℕ} (mat₁ mat₂ : Matrix A m n) → (∀ (i : Fin m) (j : Fin n) → mat₁ [ i , j ] ≡ mat₂ [ i , j ]) → mat₁ ≡ mat₂

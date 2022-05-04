@@ -6,7 +6,7 @@ open import Fin.Base using (Fin; fZero; fSucc)
 
 open import Nat.Notation using (#0; #1; #2)
 open import Fin.Notation using (#0₃; #1₃; #2₃)
-open import Eq using (_≡_; refl)
+open import Logic.Eq using (_≡_; refl)
 
 
 *[*]-example₁ : (#2 ∷ #1 ∷ #0 ∷ []) [ #0₃ ] ≡ #2
