@@ -13,6 +13,7 @@
 - [Current achievements: proving theorems on matrix transposition](#current-achievements-proving-theorems-on-matrix-transposition)
     - [Equivalence of alternative definitions](#equivalence-of-alternative-definitions)
     - [Algebraic property: involution — being self-inverse](#algebraic-property-involution--being-self-inverse)
+- [New challenges: the non-discrete, continuous, dense nature of numbers](#new-challenges-the-non-discrete-continuous-dense-nature-of-numbers)
 
 ## Scope of the project: middle and long-term goals
 
