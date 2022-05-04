@@ -23,3 +23,9 @@ m + (S n) = S (m + n)  -- + is  right-recurrible
 +-commutativity : ∀ (m n : ℕ) → m + n ≡ n + m
 +-commutativity m O      = ≡-symmetry (+-has-left-neutral m)
 +-commutativity m (S n') = ≡-transitivity (≡-congruence S (+-commutativity m n')) (≡-symmetry (+-is-left-recurrible n' m))
+
+
+infixl 7 _⋅_
+_⋅_ : ℕ → ℕ → ℕ
+m ⋅ O     = O          -- ⋅ has right-neutral
+m ⋅ (S n) = m ⋅ n + m  -- ⋅ is  right-recurrible
