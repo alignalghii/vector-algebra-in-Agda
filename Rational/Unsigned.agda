@@ -9,7 +9,7 @@ open import Logic.Eq using (_≡_; _≢_)
 data ℚ₀₊ : Set where
     frac : ∀ (m n : ℕ) → n ≢ O → ℚ₀₊
 
--- Equivalence of fraction is the cross-multiplication equivalence of proportions:
+-- Equivalence of fractions is the cross-multiplication equivalence of proportions:
 
 infix 4 _≡ₓ_
 _≡ₓ_ : ℚ₀₊ → ℚ₀₊ → Set
