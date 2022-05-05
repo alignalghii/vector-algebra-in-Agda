@@ -73,6 +73,8 @@ To tackle operations in a concise and staightforward way, the usual representati
 
 I try to solve both challenges [with the following approach](https://github.com/alignalghii/vector-algebra-in-Agda/blob/main/Rational/Unsigned.agda), by formalizing both problems with their explicit construct. In doing so, negation is defined in the usual way as [deducible absurdity](https://github.com/alignalghii/vector-algebra-in-Agda/blob/main/Logic/Absurd.agda).
 
+An additional challenge would be to integrate the above achievements into handling signs and [define signed rationals on top of the simpler unsigned ones](https://github.com/alignalghii/vector-algebra-in-Agda/blob/main/Rational/Base.agda). Beginning steps for this can be seen on the link.
+
 ---
 [[To the top of this README]](#readme) •|||• [[To project source]](#top) •|||• [[Back to central personal homepage]](https://alignalghii.github.io)
 
