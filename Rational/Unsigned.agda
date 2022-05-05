@@ -1,4 +1,4 @@
-module Rational.AbsoluteValue where
+module Rational.Unsigned where
 
 open import Nat.Base using (ℕ; O; _⋅_)
 open import Logic.Eq using (_≡_; _≢_)

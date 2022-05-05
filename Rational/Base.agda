@@ -1,6 +1,6 @@
 module Rational.Base where
 
-open import Rational.AbsoluteValue using (ℚ₀₊; frac; _≡∷₀₊_)
+open import Rational.Unsigned using (ℚ₀₊; frac; _≡∷₀₊_)
 open import Nat.Base using (ℕ; O)
 open import Logic.Bool using (𝟚)  -- sign for transitioning from ℚ₀₊ to ℚ
 open import Logic.Eq using (_≢_)

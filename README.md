@@ -71,7 +71,7 @@ To tackle operations in a concise and staightforward way, the usual representati
 - The representation with fractions (ratios) must be **constrained**: the div-by-zero constraint must be built into the definition to preserve type safety.
 - Rationals not identified by their representation in a one-to one manner: a rational is an equivalence class of the affected fraction representations (defined by identity of the appropriate cross products).
 
-I try to solve both challenges [with the following approach](https://github.com/alignalghii/vector-algebra-in-Agda/blob/main/Rational/AbsoluteValue.agda), by formalizing both problems with their explicit construct. In doing so, negation is defined in the usual way as [deducible absurdity](https://github.com/alignalghii/vector-algebra-in-Agda/blob/main/Logic/Absurd.agda).
+I try to solve both challenges [with the following approach](https://github.com/alignalghii/vector-algebra-in-Agda/blob/main/Rational/Unsigned.agda), by formalizing both problems with their explicit construct. In doing so, negation is defined in the usual way as [deducible absurdity](https://github.com/alignalghii/vector-algebra-in-Agda/blob/main/Logic/Absurd.agda).
 
 ---
 [[To the top of this README]](#readme) •|||• [[To project source]](#top) •|||• [[Back to central personal homepage]](https://alignalghii.github.io)
