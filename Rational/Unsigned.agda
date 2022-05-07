@@ -1,6 +1,7 @@
 module Rational.Unsigned where
 
 open import Nat.Base using (ℕ; O; _⋅_)
+open import Nat.Notation using (#1; #2)
 open import Logic.Eq using (_≡_; _≢_)
 
 
@@ -14,3 +15,8 @@ data ℚ₀₊ : Set where
 infix 4 _≡ₓ_
 _≡ₓ_ : ℚ₀₊ → ℚ₀₊ → Set
 frac m₁ n₁ _ ≡ₓ frac m₂ n₂ _ = m₁ ⋅ n₂ ≡ m₂ ⋅ n₁
+
+-- Examples:
+
+|½| : ℚ₀₊
+|½| = frac #1 #2 (λ ())
