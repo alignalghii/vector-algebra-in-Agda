@@ -2,6 +2,7 @@ module Rational.Unsigned where
 
 open import Nat.Base using (ℕ; O; _⋅_)
 open import Nat.Notation using (#1; #2)
+open import Nat.Constraint using (≢0)
 open import Logic.Eq using (_≡_; _≢_)
 
 
@@ -19,4 +20,4 @@ frac m₁ n₁ _ ≡ₓ frac m₂ n₂ _ = m₁ ⋅ n₂ ≡ m₂ ⋅ n₁
 -- Examples:
 
 |½| : ℚ₀₊
-|½| = frac #1 #2 (λ ())
+|½| = frac #1 #2 ≢0
