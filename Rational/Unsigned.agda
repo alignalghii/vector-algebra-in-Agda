@@ -2,12 +2,12 @@ module Rational.Unsigned where
 
 open import Nat.Base using (ℕ; O; _⋅_)
 open import Nat.Notation using (#0; #1; #2; #3; #6)
-open import Nat.Constraint using (≢0)
+open import Nat.Exclusion using (≢0)
 open import Logic.Eq using (_≡_; refl; _≢_)
 open import Logic.Absurd using (¬_)
 
 
--- Division-by-zero constraint on denominator:
+-- Division-by-zero 0-exclusion constraint on denominator:
 
 data ℚ₀₊ : Set where
     frac : ∀ (m n : ℕ) → n ≢ O → ℚ₀₊

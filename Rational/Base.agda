@@ -3,7 +3,7 @@ module Rational.Base where
 open import Rational.Unsigned using (ℚ₀₊; frac; _≡ₓ_; |½|; |⅓|; |²/₆|; |⁰/₂|; |⁰/₃|)
 open import Nat.Base using (ℕ; O)
 open import Nat.Notation using (#2; #3)
-open import Nat.Constraint using (≢0)
+open import Nat.Exclusion using (≢0)
 open import Logic.Bool using (𝟚) renaming (true to plus; false to minus)  -- sign for transitioning from ℚ₀₊ to ℚ
 open import Logic.Eq using (refl; _≢_)
 open import Logic.Absurd using (¬_)

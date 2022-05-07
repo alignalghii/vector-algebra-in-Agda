@@ -1,4 +1,4 @@
-module Nat.Constraint where
+module Nat.Exclusion where
 
 open import Nat.Base using (ℕ; O; S)
 open import Logic.Eq using (_≢_)

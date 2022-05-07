@@ -68,7 +68,7 @@ Although in the beginning phase I restrict myself to rational numbers (in order 
 
 To tackle operations in a concise and staightforward way, the usual representation with fractions (ratios) is preferred. But this natural way of representation lacks the pleasant one-to-one  total correspondence we are wont to in the case of the simpler number sets (e.g. naturals).
 
-- The representation with fractions (ratios) must be **constrained**: the div-by-zero constraint must be built into the definition to preserve type safety.
+- The representation with fractions (ratios) must be **constrained**: the div-by-zero 0-exclusion constraint must be built into the definition to preserve type safety.
 - Rationals not identified by their representation in a one-to one manner: a rational is an equivalence class of the affected fraction representations (defined by identity of the appropriate cross products).
 
 I try to solve both challenges [with the following approach](https://github.com/alignalghii/vector-algebra-in-Agda/blob/main/Rational/Unsigned.agda), by formalizing both problems with their explicit construct. In doing so, negation is defined in the usual way as [deducible absurdity](https://github.com/alignalghii/vector-algebra-in-Agda/blob/main/Logic/Absurd.agda).
