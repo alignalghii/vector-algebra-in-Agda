@@ -17,11 +17,11 @@
 
 ## Scope of the project: middle and long-term goals
 
-The scope of this project is to be able to state and to prove theorems about vectors and matrices. Agda is used as a theorem prover.
+The scope of this project is to be able to state and to prove theorems about vectors and matrices. [Agda](https://wiki.portal.chalmers.se/agda/Main/HomePage) is used as a theorem prover.
 
 ### Matrix algebra on collision detection
 
-The middle-term goal it to proceed to Fourier-Motzkin elimination, an algorithm known for solving a system of linear inequalities (i.e. solving several inequalities in several variables simultaneously).
+The middle-term goal it to proceed to [Fourier-Motzkin elimination](https://en.wikipedia.org/wiki/Fourier%E2%80%93Motzkin_elimination), an algorithm known for solving a system of linear inequalities (i.e. solving several inequalities in several variables simultaneously).
 
 As a linear equation determines a line, a linear inequality determines a half-plane, and a system of linear inequalities determines the intersection of several half-planes: a polygon! Thus such an inequality system can describe a convex polygon by “spanning” it with its holding half-planes. And a concave polygon can be represented as an union of appropriate constituent convex polygons.
 
